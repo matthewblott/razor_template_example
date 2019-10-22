@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "razor_template_example.cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "razor_template_example.web", "razor_template_example.web\razor_template_example.web.csproj", "{C1BC62E9-3661-45B4-B3DA-9FE160164A80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "razor_template_example.services", "razor_template_example.services\razor_template_example.services.csproj", "{9F48BED4-33EA-4C6D-9702-013939FF9CD1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorHtmlEmails.RazorClassLib", "RazorHtmlEmails.RazorClassLib\RazorHtmlEmails.RazorClassLib.csproj", "{1F67F2D1-3023-4136-A4AA-6B70C34191B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "razor_template_example.services", "razor_template_example.services\razor_template_example.services.csproj", "{1F67F2D1-3023-4136-A4AA-6B70C34191B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,18 +46,6 @@ Global
 		{C1BC62E9-3661-45B4-B3DA-9FE160164A80}.Release|x64.Build.0 = Release|Any CPU
 		{C1BC62E9-3661-45B4-B3DA-9FE160164A80}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1BC62E9-3661-45B4-B3DA-9FE160164A80}.Release|x86.Build.0 = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|x64.Build.0 = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Debug|x86.Build.0 = Debug|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|x64.ActiveCfg = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|x64.Build.0 = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|x86.ActiveCfg = Release|Any CPU
-		{9F48BED4-33EA-4C6D-9702-013939FF9CD1}.Release|x86.Build.0 = Release|Any CPU
 		{1F67F2D1-3023-4136-A4AA-6B70C34191B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F67F2D1-3023-4136-A4AA-6B70C34191B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F67F2D1-3023-4136-A4AA-6B70C34191B5}.Debug|x64.ActiveCfg = Debug|Any CPU

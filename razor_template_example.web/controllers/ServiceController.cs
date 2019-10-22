@@ -12,17 +12,9 @@ namespace razor_template_example.web.controllers
       _templateService = templateService;
     }
 
-    public string Example1()
+    public string Welcome()
     {
       var retVal = _templateService.Welcome("Hello World!");
-
-      return retVal;
-
-    }
-    
-    public string Example2()
-    {
-      var retVal = _templateService.Welcome2("Hello World!");
 
       return retVal;
 

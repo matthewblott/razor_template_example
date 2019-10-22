@@ -5,7 +5,6 @@
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RazorHtmlEmails.RazorClassLib\RazorHtmlEmails.RazorClassLib.csproj" />
     <ProjectReference Include="..\razor_template_example.services\razor_template_example.services.csproj" />
   </ItemGroup>
   <ItemGroup>

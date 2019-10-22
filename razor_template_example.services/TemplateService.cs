@@ -1,6 +1,6 @@
 using System;
-using RazorHtmlEmails.RazorClassLib;
-using RazorHtmlEmails.RazorClassLib.models;
+using razor_template_example.services;
+using razor_template_example.services.models;
 
 namespace razor_template_example.services
 {
@@ -12,10 +12,6 @@ namespace razor_template_example.services
       _razorViewToStringRenderer = razorViewToStringRenderer;
 
     public string Welcome(string message) =>
-      _razorViewToStringRenderer.RenderViewToStringAsync(
-        "/views/reports/ConfirmAccountEmail.cshtml", new AccountViewModel("/")).Result;
-
-    public string Welcome2(string message) =>
       _razorViewToStringRenderer.RenderViewToStringAsync("/views/reports/Welcome.cshtml", new WelcomeViewModel(message))
         .Result;
 

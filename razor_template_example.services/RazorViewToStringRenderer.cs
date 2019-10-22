@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RazorHtmlEmails.RazorClassLib
+namespace razor_template_example.services
 {
   public class RazorViewToStringRenderer : IRazorViewToStringRenderer
   {
@@ -30,25 +30,21 @@ namespace RazorHtmlEmails.RazorClassLib
       _serviceProvider = serviceProvider;
     }
 
-    public async Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model)
+    public async Task<string> RenderViewToStringAsync<TModel>(string viewPath, TModel model)
     {
       var actionContext = GetActionContext();
-      var view = FindView(actionContext, viewName);
+      var view = FindView(actionContext, viewPath);
 
       using (var output = new StringWriter())
       {
         var viewContext = new ViewContext(
           actionContext,
           view,
-          new ViewDataDictionary<TModel>(
-            metadataProvider: new EmptyModelMetadataProvider(),
-            modelState: new ModelStateDictionary())
+          new ViewDataDictionary<TModel>(new EmptyModelMetadataProvider(), new ModelStateDictionary())
           {
             Model = model
           },
-          new TempDataDictionary(
-            actionContext.HttpContext,
-            _tempDataProvider),
+          new TempDataDictionary(actionContext.HttpContext, _tempDataProvider),
           output,
           new HtmlHelperOptions());
 
@@ -58,15 +54,17 @@ namespace RazorHtmlEmails.RazorClassLib
       }
     }
 
-    private IView FindView(ActionContext actionContext, string viewName)
+    private IView FindView(ActionContext actionContext, string viewPath)
     {
-      var getViewResult = _viewEngine.GetView(executingFilePath: null, viewPath: viewName, isMainPage: true);
+      var getViewResult = _viewEngine.GetView(null, viewPath, true);
+      
       if (getViewResult.Success)
       {
         return getViewResult.View;
       }
 
-      var findViewResult = _viewEngine.FindView(actionContext, viewName, isMainPage: true);
+      var findViewResult = _viewEngine.FindView(actionContext, viewPath, true);
+      
       if (findViewResult.Success)
       {
         return findViewResult.View;
@@ -75,7 +73,7 @@ namespace RazorHtmlEmails.RazorClassLib
       var searchedLocations = getViewResult.SearchedLocations.Concat(findViewResult.SearchedLocations);
       var errorMessage = string.Join(
         Environment.NewLine,
-        new[] {$"Unable to find view '{viewName}'. The following locations were searched:"}.Concat(searchedLocations));
+        new[] {$"Unable to find view '{viewPath}'. The following locations were searched:"}.Concat(searchedLocations));
       ;
 
       throw new InvalidOperationException(errorMessage);
@@ -84,7 +82,11 @@ namespace RazorHtmlEmails.RazorClassLib
     private ActionContext GetActionContext()
     {
       var httpContext = new DefaultHttpContext {RequestServices = _serviceProvider};
+      
       return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
+      
     }
+    
   }
+  
 }

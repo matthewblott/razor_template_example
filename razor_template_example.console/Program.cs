@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Diagnostics.Tracing;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using razor_template_example.services;
+using razor_template_example.web;
 
 namespace razor_template_example.console
 { 
@@ -7,24 +13,25 @@ namespace razor_template_example.console
   {
     private static void Main(string[] args)
     {
-//      var engine = new RazorLightEngineBuilder()
-//        .UseMemoryCachingProvider()
-//        .Build();
-
-//      var service = new TemplateService(engine);      
+      var host = new HostEnvironment();
+      var services = new ServiceCollection();
       
-//      var services = new ServiceCollection();
-//      var startup = new Startup();
-//
-//      startup.ConfigureServices(services);
-//
-//      var provider = services.BuildServiceProvider();
-//      var service = provider.GetService<ITemplateService>();
-//      
-//      var result = service.Example();
+      services.AddSingleton<IWebHostEnvironment, HostEnvironment>();
+      services.AddSingleton<ILoggerFactory, LoggerFactory>();
+      
+      var diagnosticSource = new DiagnosticListener("Microsoft.AspNetCore");
+      services.AddSingleton<DiagnosticSource>(diagnosticSource);
+      
+      var startup = new Startup(host);
 
-//      Console.WriteLine(result);
-//      Console.Read();
+      startup.ConfigureServices(services);
+
+      var serviceProvider = services.BuildServiceProvider();
+      var service = serviceProvider.GetService<ITemplateService>();
+
+      var result = service.Welcome("Hello World!");
+
+      Console.WriteLine(result);
 
     }
     

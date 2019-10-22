@@ -1,4 +1,4 @@
-﻿namespace RazorHtmlEmails.RazorClassLib.models
+﻿namespace razor_template_example.services.models
 {
   public class WelcomeViewModel
   {

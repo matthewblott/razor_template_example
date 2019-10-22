@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using razor_template_example.services;
-using RazorHtmlEmails.RazorClassLib;
-//using razor_template_example.services;
 using Westwind.AspNetCore.Markdown;
 //[assembly: AspMvcViewLocationFormat(@"~/../razor_template_example.services/views")]
 
@@ -16,6 +16,12 @@ namespace razor_template_example.web
 {
   public class Startup
   {
+    public IWebHostEnvironment WebHostEnvironment { get; }
+    public Startup(IWebHostEnvironment environment)
+    {
+      WebHostEnvironment = environment;
+    }
+
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddScoped<ITemplateService, TemplateService>();
